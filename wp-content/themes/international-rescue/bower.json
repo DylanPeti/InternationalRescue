@@ -1,0 +1,23 @@
+{
+  "name": "international-rescue",
+  "version": "1.0.0",
+  "authors": [
+    "katie <katie@gladeye.co.nz>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "compass-breakpoint": "2.0.5",
+    "jQuery.mmenu": "4.2.3",
+    "jquery-cycle2": "2.1.0",
+    "fitvids": "1.1.0",
+    "jquery.columnizer": "1.6.0",
+    "picturefill": "1.2.1"
+  }
+}

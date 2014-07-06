@@ -1,0 +1,88 @@
+/*
+Theme Name:     Site theme
+Author:         Gladeye
+Author URI:     http: //gladeye.co.nz/
+*/
+
+@import "normalize";
+@import "bootstrap";
+
+
+//
+// Main
+//
+
+body{
+    font-size:17px;
+    line-height:1.8em;
+    color:white;
+    background-color:black;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    overflow-x:hidden;
+}
+
+.container{
+    width:900px;
+    margin:0 auto;
+    text-align: center;
+}
+
+a {
+    color:#d81f31;
+    text-decoration: none;
+    &:visited {color:#d81f31;}
+    &:hover {text-decoration: underline; color:white;}
+    &:active {color:#d81f31;}
+}
+
+:focus {
+    outline: 0;
+    border: 0;
+}
+
+::-moz-focus-inner {border:0;}
+
+
+.logo {
+    padding:80px 0 0 0;
+    width:300px;
+    height:90px;
+    margin:0 auto;
+}
+
+h1 {
+    font-size:25px;
+}
+
+ul {
+    list-style: none;
+    li {
+        display:inline;
+        padding:0 10px;
+    }
+}
+
+
+//
+// Helper Classes
+//
+
+.disabled {cursor:default;}
+.ir { display: block; text-indent: -9999px; overflow: hidden;}
+.ir:before {display: none;}
+.hidden { display: none !important;}
+.invisible { visibility: hidden; display: none;}
+.inline-block{
+  display:inline-block;
+  *display:inline; zoom:1;
+  vertical-align:top;
+}
+.clear {clear: both;}
+.clearfix{@include pie-clearfix;}
+
+*:focus { outline: none; }
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+textarea {resize: vertical;}
+img {vertical-align: middle;}

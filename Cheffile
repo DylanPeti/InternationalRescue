@@ -1,0 +1,17 @@
+site "http://community.opscode.com/api/v1"
+
+# Utils
+cookbook "apt"
+cookbook "build-essential"
+cookbook "openssl"
+cookbook "xml"
+cookbook "vim"
+cookbook "git"
+
+# Project
+cookbook "apache2"
+cookbook "mysql"
+cookbook "database"
+cookbook "php", :git => "https://github.com/priestjim/chef-php",
+cookbook "php-extra", :git => "https://github.com/priestjim/chef-php-extra",
+cookbook "phpmyadmin", :git => "https://github.com/priestjim/chef-phpmyadmin",

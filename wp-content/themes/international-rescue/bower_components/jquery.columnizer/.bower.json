@@ -1,0 +1,14 @@
+{
+  "name": "jquery.columnizer",
+  "homepage": "https://github.com/adamwulf/Columnizer-jQuery-Plugin",
+  "version": "1.6.0",
+  "_release": "1.6.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.6.0",
+    "commit": "3d1193118abd39d66237503a6e0df15d995c39b7"
+  },
+  "_source": "git://github.com/adamwulf/Columnizer-jQuery-Plugin.git",
+  "_target": "1.6.0",
+  "_originalSource": "jquery.columnizer"
+}

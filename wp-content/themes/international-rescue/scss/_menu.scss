@@ -1,0 +1,152 @@
+@import "bootstrap";
+
+.menu-overlay {
+    visibility:hidden;
+    background-color:rgba(215,31,48,0);
+    @include transition-time(background-color, 0.4s);
+    position: fixed;
+    top:0; left:0; right:0; bottom:0;
+    width:100%; height:100%;
+    z-index: 1000;
+    .menu-header {
+        width:100%;
+        padding:0 $wrap-gutter;
+        position: absolute;
+        @include opacity(0);
+        @include transition-time(opacity, 0.4s);
+        .menu-logo {
+                position: absolute;
+                top:20px; left:$wrap-gutter;
+                width:105px; height:84px;
+                margin-right:$gutters-single;
+            a {
+                @include background(image-url('logo-overlay.png') no-repeat 0 0);
+                -webkit-background-size: 105px auto;
+                background-size: 105px auto;
+                width:100%; height:100%;
+                @extend %inline-block;
+                text-indent:-9999px;
+            }
+        }
+        .menu-close {
+            position: absolute;
+            right:$wrap-gutter; top:20px;
+            width:105px; height:84px;
+            .menu-burger {display:block;}
+            .menu-burger span {font-size:46px; padding:18px 29px; display: block;}
+        }
+
+    }
+    >.inner {
+        //padding:94px 0 0;
+        display:table;
+        height: 100%;
+        width: 100%;
+    }
+    .the-title {
+        margin-top:40px;
+        text-align:center;
+        h2 {color:white; font-size:30px; padding-top: 0; margin-bottom: 0;}
+        h1 {color:white; font-size:40px; line-height: 1.1em;}
+    }
+    .the-menu {
+        text-align:center;
+        display:table-cell;
+        vertical-align: middle;
+        @include opacity(0);
+        @include transition-time(opacity, 0.4s);
+        ul.menu {margin: -40px 0 0;  @include transition-time(all, 0.4s);}
+        .menu li {
+            font-size:60px;
+            line-height:1.2em;
+            @extend %klavika-med;
+            padding:7px 0;
+            a {@include transition-simple(color); @include opacity(0.7);}
+            a:hover {@include opacity(1);}
+            &.current-menu-item a{@include opacity(1);}
+        }
+        .social li {
+            @extend %inline-block;
+            margin:20px 5px 0;
+            a {font-size:35px; line-height: 1.4em; @include transition-simple(color);}
+            a:hover {color:black;}
+        }
+    }
+    @include breakpoint(max-width 1700px) {
+
+        .menu-header {
+            .menu-logo  {
+                position:relative;
+                margin:0 $gutters-single;
+                left:0;
+                float:left;
+            }
+            .menu-close {
+                position:relative;
+                float:right;
+                margin:0 $gutters-single;
+                left:0;
+            }
+        }
+    }
+    @include breakpoint(max-width 568px) {
+
+        .menu-header {
+            .menu-logo  {
+                width:60px; height:48px;
+                a {
+                    -webkit-background-size: 60px auto;
+                    background-size: 60px auto;
+                }
+            }
+            .menu-close {
+                width:60px; height:48px;
+                .menu-burger span {font-size:30px; padding:7px 9px;}
+            }
+        }
+        .the-menu {
+            .menu li {
+                font-size:30px;
+                padding:0px 0;
+            }
+            .social li {
+                margin:10px 5px 0;
+                a {font-size:25px;}
+            }
+        }
+        .the-title {
+            margin-top:15px;
+            h2 {color:white; font-size:15px;}
+            h1 {color:white; font-size:18px;}
+        }
+    }
+}
+
+// Menu
+
+.closing .menu-overlay {
+    background-color:rgba(215,31,48,0);
+    visibility:visible;
+    .the-menu {
+        @include opacity(0);
+        ul.menu {margin: 60px 0 0;}
+    }
+}
+
+.nav-open .menu-overlay {
+    overflow:hidden;
+    background-color: rgba(215,31,48,0.9);
+    visibility:visible;
+    .menu-header {
+        @include opacity(1);
+    }
+    .the-menu {
+        @include opacity(1);
+        ul.menu {margin: 0px 0 0;}
+    }
+}
+
+.nav-open {
+    header .logo {@include opacity(0);}
+    header .burger {@include opacity(0);}
+}

@@ -1,0 +1,123 @@
+
+// Standard White Page
+.page-template-pageswhite-php {
+    background-color: white;
+    .content {
+        color:black;
+        h1, h2, h3, h4, h5, h6, p {color:black;}
+        a {color:$red;}
+        a:hover {color:black; text-decoration: underline;}
+        h1 a {color:black;}
+    }
+    .the-post {
+        @include grid-span(6, 4, $gutter: 0);
+        img {width: 100%; max-width:700px; height:auto;}
+    }
+    @include breakpoint(max-width 1080px) {
+        .the-post { @include grid-span(8, 3, $gutter: 0);}
+    }
+    @include breakpoint(max-width 779px) {
+        .the-post { @include grid-span(12, 1, $gutter: 0);}
+    }
+    h2 {padding-top:30px; margin-bottom:30px;}
+    h4 {
+        border-top:1px solid black;
+        padding-top:15px;
+        &.first {border:none;}
+    }
+}
+
+// Shortcode columns
+.one_half {
+    @include grid-span(3, 1, 6, $output-style: 'float');
+
+    @include breakpoint(max-width 1080px) {
+        @include grid-span(4, 1, 8, $output-style: 'float');
+    }
+    @include breakpoint(max-width 779px) {
+        @include grid-span(12, 1, 12);
+    }
+}
+
+
+// Contact Page
+.contact-page {
+    .the-post h1 {padding:0 $gutters-single;}
+    .email-signup {
+        padding:30px $gutters-single 0;
+    }
+}
+
+// Submenu
+.submenu {
+    @include grid-span(6, 4, $gutter: 0);
+    margin-top:30px;
+    margin-bottom:30px;
+    ul {}
+    li {
+        @extend %inline-block;
+        padding-right:15px;
+        a {
+            @extend .btn;
+            border:1px solid $red;
+            &:hover {
+                color:white !important;
+                background-color:black;
+                text-decoration: none !important;
+                border:1px solid black;
+            }
+        }
+    }
+    @include breakpoint(max-width 779px) {
+        @include grid-span(12, 1, $gutter: 0);
+    }
+}
+
+// Email Signup
+
+.email-signup {
+
+    .field-block {
+        padding:10px 0;
+        clear:both;
+    }
+}
+
+form {
+    label {
+        text-align:right;
+        @extend %inline-block;
+        width:25%;
+        margin-right:15px;
+        @extend %box-sizing;
+    }
+    input {
+        width:70%;
+        border:1px solid black;
+        @include border-radius(2px);
+        padding:5px 10px;
+        &.error {border:1px solid $red;}
+        @extend %box-sizing;
+    }
+    .btn-submit {
+        background-color:transparent;
+        border:1px solid $red;
+        @include border-radius(2px);
+        color:$red;
+        float:right;
+        margin-right:2%;
+        &:hover {
+            background-color:black;
+            border:1px solid black;
+            color:white;
+        }
+    }
+    @include breakpoint(max-width 790px) {
+        label {
+            text-align:left;
+            width:100%;
+        }
+        input {width:100%;}
+        .btn-submit {margin-right:0;}
+    }
+}

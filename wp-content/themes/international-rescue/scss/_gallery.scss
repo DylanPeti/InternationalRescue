@@ -1,0 +1,184 @@
+@import "bootstrap";
+
+.single-artwork {
+
+    .image-gallery-wrapper{
+        position: relative;
+    }
+
+    .artist-header {
+        width:100%;
+        .name {
+            @include grid-span(10, 1);
+            h1 {@extend %inline-block; vertical-align: bottom; padding:0 30px 0 0 ;}
+        }
+        .position {
+            @extend %klavika-med;
+            @extend %inline-block;
+            vertical-align: bottom;
+            color:$grey_mid;
+            .current {
+                color:$grey_light;
+                font-size:20px;
+            }
+        }
+        .view-profile {
+            @include grid-span(2, 11);
+            text-align:right;
+            padding-top:30px;
+        }
+    }
+
+    .image-caption {
+        @include clearfix();
+        @include opacity(0);
+        @include transform(translateX(-50%));
+        position: absolute;
+        left: 50%;
+        padding-top: 10px;
+        &.show {
+            @include opacity(1);
+        }
+
+        // @include size(100% auto);
+        li {@extend %inline-block;}
+        .image-info {
+            @include grid-span(9, 1);
+            font-size:13px;
+            p{margin:0; color:$grey_light;}
+            a {
+                text-decoration: underline;
+                padding-right:3px;
+                @include transition-simple(color);
+                &:hover {color:$red;}
+            }
+        }
+        .social-share {
+            @include grid-span(3, 10);
+            ul {text-align: right;}
+            li a {
+                font-size:25px;
+                @include transition-simple(color);
+                &:hover {color:$red;}
+            }
+        }
+
+        .caption {
+            p { line-height: 1.25em; }
+        }
+    }
+
+    .taxo-boxes {
+        height:36px;
+    }
+
+    .new-section {
+        @include grid-span(12, 1);
+        margin:60px 0 45px 0;
+        h4 {border-bottom:1px solid $grey_light;}
+    }
+
+    .slideshow-container {
+        @include size(100% 850px);
+        position: relative;
+        margin-top: 4em;
+
+        .slideshow {
+            @include stretch(0);
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .slideshow-artwork {
+            @include stretch(0 0 5em 0);
+            @include transform(translate3d(0, 0, 0));
+            position: absolute;
+
+            &.transition {
+                @include transition(transform .3s cubic-bezier(0.795, 0.01, 0.325, 0.99));
+            }
+
+            &[data-type="image"] {
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+            }
+
+            &[data-type="video"] {
+                > .inner {
+                    @include size(100% auto);
+                    @include transform(translateY(-50%));
+                    position: relative;
+                    top: 50%;
+                    &:after {
+                        padding-top: 56.25%; /*16:9 ratio*/
+                        display: block;
+                        content: '';
+                    }
+                }
+
+                iframe {
+                    position: absolute;
+                    @include size(100%);
+                }
+            }
+
+            &[data-position="centre"] {
+                @include transform(translateX(0));
+            }
+
+            &[data-position="left"] {
+                @include transform(translateX(-110%));
+            }
+
+            &[data-position="right"] {
+                @include transform(translateX(110%));
+            }
+        }
+
+        .slide {
+            @include size(60px 30px);
+            position: absolute; top: 40%;
+            z-index: 3;
+            display: table;
+            font-size:30px;
+            padding:15px;
+            color:white; cursor:pointer;
+            @include transition-simple(color);
+
+            &:hover {color:$red;}
+
+            &.prev {left: 0;}
+            &.next {right: 0;}
+
+            &:before {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+    }
+    @include breakpoint(max-width 1080px) {
+        .artist-header .name { @include grid-span(8, 1);}
+        .artist-header .view-profile {@include grid-span(4, 9);}
+    }
+    @include breakpoint(max-width 1000px) {
+        .artist-header .name { @include grid-span(12, 1);}
+        .artist-header .view-profile {
+            @include grid-span(12, 1);
+            text-align:left;
+            padding-top:10px;
+        }
+    }
+    @include breakpoint(max-width 779px) {
+        .cycle-slideshow {width:100%; margin: 60px $gutters 0;}
+    }
+
+    @include breakpoint(max-width 568px) {
+        .artist-header .name h1{padding:0 15px 0 0 ;}
+        .slideshow-container {margin-top: $gutters-single;}
+        .image-caption .image-info { @include grid-span(12, 1);}
+        .image-caption .social-share { @include grid-span(12, 1);}
+        .image-caption .social-share ul {text-align: left;}
+        .new-section {margin:0px 0 15px 0;}
+    }
+}

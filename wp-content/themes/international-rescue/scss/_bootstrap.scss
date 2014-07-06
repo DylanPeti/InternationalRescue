@@ -1,0 +1,124 @@
+@import "compass";
+@import "breakpoint";
+@import "singularitygs";
+
+$grey_dark: #181b1c;
+$grey_mid: #44494b;
+$grey_light: #7a7f82;
+$off_white: #e7e6e6;
+$dropdown_btn: #1c1f20;
+$grey_footer: #131516;
+$footer_copy: #787d82;
+$red: #d81f31;
+
+$photography : #07859b;
+$animation : #c95c73;
+$illustration : #fbcc58;
+$storyboards: #fbdf9b;
+$movingimage: #6abdcc;
+
+$facebook :#3c5a99 ;
+$twitter :#28aae1 ;
+$pinterest :#bd091e ;
+
+// Grid set up
+$breakpoint-default-feature: 'max-width';
+$mobile-first: false;
+
+
+$grids: 12;
+$gutters: 30px;
+$gutter-styles: 'split';
+//$include-clearfix: true;
+
+$max-width: 1390;
+$wrap-gutter:3%;
+$gutters-single: #{$gutters/2};
+
+
+// Classes
+
+%box-sizing {
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing: border-box;
+}
+
+
+// Mixins
+
+@mixin transition-simple($prop) {
+    -webkit-transition: $prop .25s ease;
+    -moz-transition: $prop .25s ease;
+    -ms-transition: $prop .25s ease;
+    transition: $prop .25s ease;
+}
+
+@mixin transition-time($prop, $time) {
+    -webkit-transition: $prop $time ease;
+    -moz-transition: $prop $time ease;
+    -ms-transition: $prop $time ease;
+    transition: $prop $time ease;
+}
+
+// @mixin transformer($y-axis) {
+//     -webkit-transform: translate(0,$y-axis);
+//     -moz-transform: translate(0,$y-axis);
+//     -ms-transform: translate(0,$y-axis);
+//     -o-transform: translate(0,$y-axis);
+// }
+
+@mixin size($size) {
+    @if length($size) == 1 {
+        @if $size == auto {
+            width: $size;
+            height: $size;
+        }
+        @else if unitless($size) {
+            width: $size + px;
+            height: $size + px;
+        }
+        @else if not unitless($size) {
+            width: $size;
+            height: $size;
+        }
+    }
+    // Width x Height
+    @if length($size) == 2 {
+        $width: nth($size, 1);
+        $height: nth($size, 2);
+        @if $width == auto {
+            width: $width;
+        }
+        @else if not unitless($width) {
+            width: $width;
+        }
+        @else if unitless($width) {
+            width: $width + px;
+        }
+        @if $height == auto {
+            height: $height;
+        }
+        @else if not unitless($height) {
+            height: $height;
+        }
+        @else if unitless($height) {
+            height: $height + px;
+        }
+    }
+}
+
+@mixin stretch($value: 0px) {
+    $top: nth($value, 1);
+    $right: $top;
+    $bottom: $top;
+    $left: $right;
+
+    @if length($value) > 1 { $right: nth($value, 2); } @else {$right: $top;}
+    @if length($value) > 2 { $bottom: nth($value, 3); } @else {$bottom: $top;}
+    @if length($value) > 3 { $left: nth($value, 4); } @else {$left: $right;}
+
+
+    position: absolute;
+    top: $top; right: $right; bottom: $bottom; left: $left;
+}

@@ -1,0 +1,75 @@
+@import "bootstrap";
+
+
+.grid-wrapper {
+    max-width: #{$max-width+'px'};
+    margin:0 auto;
+}
+
+.grid-wrapper[data-columns]::before {
+    content: '4 .column.size-1of4';
+}
+
+.artworks-column[data-columns]::before {
+    content: '3 .column.size-1of3';
+}
+
+[data-columns]::before { visibility: hidden; }
+
+// Main Grid
+.grid-wrapper {
+    .size-1of4 {@include grid-span(3, 1, $output-style: 'float');}
+    .size-1of3 {@include grid-span(4, 1, $output-style: 'float'); }
+    .size-1of2 {@include grid-span(6, 1, $output-style: 'float');}
+    .size-1of1 {@include grid-span(12, 1, $output-style: 'float'); }
+}
+
+// Artist Page
+.artworks-column {
+    .size-1of3 {@include grid-span(3, 1, 9, $output-style: 'float');}
+    .size-1of2 {@include grid-span(4, 1, 8, $output-style: 'float'); }
+    .size-1of1 {@include grid-span(6, 1, 6, $output-style: 'float'); }
+    .size-1of0 {@include grid-span(12, 1, 12, $output-style: 'float'); }
+}
+
+
+@include breakpoint(min-width 1081px) {
+    .grid-wrapper[data-columns]::before {
+        content: '4 .column.size-1of4';
+    }
+    .artworks-column[data-columns]::before {
+        content: '3 .column.size-1of3';
+    }
+}
+
+@include breakpoint(780px 1080px) {
+    .grid-wrapper[data-columns]::before {
+        content: '3 .column.size-1of3';
+    }
+    .artworks-column[data-columns]::before {
+        content: '2 .column.size-1of2';
+    }
+}
+
+@include breakpoint(569px 779px) {
+    .grid-wrapper[data-columns]::before {
+        content: '2 .column.size-1of2';
+    }
+    .artworks-column[data-columns]::before {
+        content: '1 .column.size-1of1';
+    }
+}
+
+@include breakpoint(max-width 568px) {
+    .grid-wrapper[data-columns]::before {
+        content: '1 .column.size-1of1';
+    }
+    .artworks-column[data-columns]::before {
+        content: '1 .column.size-1of0';
+    }
+}
+
+
+
+
+

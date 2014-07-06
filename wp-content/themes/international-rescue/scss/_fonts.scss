@@ -1,0 +1,114 @@
+
+@font-face {
+    font-family: 'klavika-med';
+    src: url('../fonts/klavika-medium-webfont.eot');
+    src: url('../fonts/klavika-medium-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/klavika-medium-webfont.woff') format('woff'),
+    url('../fonts/klavika-medium-webfont.ttf') format('truetype'),
+    url('../fonts/klavika-medium-webfont.svg#klavikamedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'klavika-reg';
+    src: url('../fonts/klavika-regular-webfont.eot');
+    src: url('../fonts/klavika-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/klavika-regular-webfont.woff') format('woff'),
+    url('../fonts/klavika-regular-webfont.ttf') format('truetype'),
+    url('../fonts/klavika-regular-webfont.svg#klavika_rgregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+%klavika-reg {
+    font-family:'klavika-reg', "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-weight: normal; -webkit-font-smoothing: antialiased;
+}
+
+%klavika-med {
+    font-family:'klavika-med', "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-weight: normal; -webkit-font-smoothing: antialiased;
+}
+
+
+// Icomoon
+
+@font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon.eot?wkbqkk');
+    src:url('../fonts/icomoon.eot?#iefixwkbqkk') format('embedded-opentype'),
+        url('../fonts/icomoon.woff?wkbqkk') format('woff'),
+        url('../fonts/icomoon.ttf?wkbqkk') format('truetype'),
+        url('../fonts/icomoon.svg?wkbqkk#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+%icons {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    @extend %icons;
+}
+
+.icon-cross:before {
+    content: "\e600";
+}
+.icon-arrow_right:before {
+    content: "\e608";
+}
+.icon-arrow_left:before {
+    content: "\e609";
+}
+.icon-burger:before {
+    content: "\e60a";
+}
+.icon-twitter_noFrame:before {
+    content: "\e601";
+}
+.icon-twitter_Frame:before {
+    content: "\e602";
+}
+.icon-pinterest_noFrame:before {
+    content: "\e603";
+}
+.icon-pinterest_Frame:before {
+    content: "\e604";
+}
+.icon-linked_Frame:before {
+    content: "\e605";
+}
+.icon-facebook_noFrame:before {
+    content: "\e606";
+}
+.icon-facebook_Frame:before {
+    content: "\e607";
+}
+.icon-bubble_noFrame:before {
+    content: "\e60b";
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+

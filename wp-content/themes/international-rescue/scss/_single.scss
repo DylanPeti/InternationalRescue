@@ -1,0 +1,52 @@
+@import "bootstrap";
+
+.single-artist {
+
+    .artist-header {
+        width:100%;
+        padding:51px 0 60px 0;
+        .name {@include grid-span(8, 1);}
+        .actions {
+            @include grid-span(4, 9);
+            text-align:right;
+            padding-top:30px;
+            .btn-contactir {margin-right:15px;}
+        }
+    }
+    .column-left {
+        @include grid-span(3, 1);
+        ul li {@extend %inline-block; margin:0 15px 15px 0;}
+        img {width:100%; height:auto;}
+        .word {
+            font-size:22px;
+            @extend %klavika-med;
+            @include transition-simple(color);
+        }
+    }
+
+    .column-right {
+        @include grid-span(9, 4, $gutter: 0);
+    }
+
+    @include breakpoint(max-width 1250px) {
+        .artist-header .name {@include grid-span(7, 1);}
+        .artist-header .actions {@include grid-span(5, 8);}
+    }
+
+    @include breakpoint(max-width 1080px) {
+        .column-left {@include grid-span(4, 1);}
+        .column-right {@include grid-span(8, 5, $gutter: 0);}
+        .artist-header .name {@include grid-span(12, 1);}
+        .artist-header .actions {@include grid-span(12, 1); text-align:left; padding-top:10px;}
+    }
+    @include breakpoint(max-width 779px) {
+        .column-left {@include grid-span(6, 1);}
+        .column-right {@include grid-span(6, 7, $gutter: 0);}
+    }
+    @include breakpoint(max-width 568px) {
+        .column-left {@include grid-span(12, 1);}
+        .column-right {@include grid-span(12, 1, $gutter: 0);}
+        .artist-header {padding:0 0 15px 0;}
+        .artist-header .actions .btn-contactir {margin-bottom:15px;}
+    }
+}

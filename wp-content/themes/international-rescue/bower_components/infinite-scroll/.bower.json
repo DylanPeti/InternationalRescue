@@ -1,0 +1,14 @@
+{
+  "name": "infinite-scroll",
+  "homepage": "https://github.com/paulirish/infinite-scroll",
+  "_release": "3ffe36bf4f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "3ffe36bf4fe7df254b3e4ce273bbed6036633fe2"
+  },
+  "_source": "git://github.com/paulirish/infinite-scroll.git",
+  "_target": "*",
+  "_originalSource": "git://github.com/paulirish/infinite-scroll.git",
+  "_direct": true
+}

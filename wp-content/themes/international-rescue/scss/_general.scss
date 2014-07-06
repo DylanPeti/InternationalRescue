@@ -1,0 +1,507 @@
+@import "bootstrap";
+
+// Buttons
+
+.btn {
+    @extend %klavika-med;
+    border:1px solid white;
+    @include border-radius(2px);
+    color:white;
+    @extend %inline-block;
+    padding:2px 20px;
+    @include transition-simple(all);
+    &:hover {
+        background-color:white;
+        color:black;
+    }
+    @include breakpoint(max-width 568px) {
+        padding:0px 15px;
+    }
+    &.disabled:hover {background-color:transparent; color:white;}
+}
+
+.btn-photography,.btn-photography:visited  {
+    color:$photography;
+    border:1px solid $photography;
+    &:hover {
+        background-color:$photography;
+        color:black;
+    }
+    &.disabled:hover {background-color:transparent; color:$photography;}
+}
+
+.btn-animation, .btn-animation:visited{
+    color:$animation;
+    border:1px solid $animation;
+    &:hover {
+        background-color:$animation;
+        color:black;
+    }
+    &.disabled:hover {background-color:transparent; color:$animation;}
+}
+
+.btn-illustration, .btn-illustration:visited{
+    color:$illustration;
+    border:1px solid $illustration;
+    &:hover {
+        background-color:$illustration;
+        color:black;
+    }
+    &.disabled:hover {background-color:transparent; color:$illustration;}
+}
+
+.btn-storyboards, .btn-storyboards:visited{
+    color:$storyboards;
+    border:1px solid $storyboards;
+    &:hover {
+        background-color:$storyboards;
+        color:black;
+    }
+    &.disabled:hover {background-color:transparent; color:$storyboards;}
+}
+
+.btn-movingimage, .btn-movingimage:visited{
+    color:$movingimage;
+    border:1px solid $movingimage;
+    &:hover {
+        background-color:$movingimage;
+        color:black;
+    }
+    &.disabled:hover {background-color:transparent; color:$movingimage;}
+}
+
+.word-photography,.word-photography:visited  {
+    color:$photography;
+    &:hover {color:white;}
+}
+
+.word-animation, .word-animation:visited{
+    color:$animation;
+    &:hover {color:white;}
+}
+
+.word-illustration, .word-illustration:visited{
+    color:$illustration;
+    &:hover {color:white;}
+}
+
+.word-storyboards, .word-storyboards:visited{
+    color:$storyboards;;
+    &:hover {color:white;}
+}
+
+.word-movingimage, .word-movingimage:visited{
+    color:$movingimage;
+    &:hover {color:white;}
+}
+
+.taxo-boxes {
+    @include grid-span(12, 1);
+    float:none;
+
+    &.top {margin-bottom: 15px;}
+    &.taxo-grid {margin-bottom: 60px;}
+	li {@extend %inline-block; margin:0 15px 15px 0;}
+    @include breakpoint(max-width 568px) {
+        &.taxo-grid {margin-bottom: 30px;}
+    }
+}
+
+// Thumbnails
+
+.item {
+    position:relative;
+    margin-bottom:$gutters;
+    overflow:hidden;
+    @include border-radius(2px);
+    > a {display:block;}
+    img {width:100%; height:auto;}
+    .overlay {
+        background-color: black;
+        @include opacity(0);
+        width:100%; height:100%;
+        position: absolute;
+        top:0; left:0;
+        @include transition-simple(opacity);
+    }
+    .icon-enlarge {
+        width:28px; height:29px;
+        padding:5px;
+        @include border-radius(2px);
+        @include opacity(0);
+        @include transition-simple(all);
+        position: absolute;
+        top:29%; left:45%;
+        &.photography {background-color: $photography;}
+        &.animation {background-color: $animation;}
+        &.illustration {background-color: $illustration;}
+        &.storyboards {background-color: $storyboards;}
+        &.movingimage {background-color: $movingimage;}
+        >.icon {
+            display:block;
+            width:20px; height:20px;
+            -webkit-background-size: 20px auto;
+            background-size: 20px auto;
+            @include opacity(0.8);
+            &.magnify {
+                @include background(image-url('magnifier.png') no-repeat top left);
+                -webkit-background-size: 20px auto;
+                background-size: 20px auto;
+            }
+            &.play-button:after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 6px;
+                left: 7px;
+                margin: 0 auto;
+                border-style: solid;
+                border-width: 9.5px 0 9.5px 17px;
+                border-color: transparent transparent transparent rgba(255, 255, 255, 1);
+            }
+        }
+    }
+    .artist-name {
+        position: absolute;
+        top:60%; left:0;
+        width:100%;
+        text-align: center;
+        @include opacity(0);
+        @include transition-simple(all);
+    }
+    &:hover {
+        .overlay {@include opacity(0.3);}
+        .icon-enlarge {
+            @include opacity(1);
+            top:33%;
+        }
+        .artist-name {
+            @include opacity(1);
+            top:52%;
+        }
+    }
+}
+
+// Header
+
+.desktop {display:block;}
+.mobile {display:none;}
+
+@include breakpoint(max-width 767px) {
+    .desktop {display:none;}
+    .mobile {display:block;}
+}
+
+header {
+    width:100%;
+    height:120px;
+    background-color:black;
+    position: relative;
+    >.inner {
+        width:100%;
+        padding:0 $wrap-gutter;
+    }
+    .logo {
+        position: absolute;
+        top:20px; left:$wrap-gutter;
+        width:105px; height:84px;
+        margin-right:$gutters-single;
+        @include opacity(1);
+        @include transition-time(opacity, 0.6s);
+
+    }
+    .logo a{
+        @include background(image-url('logo.gif') no-repeat 0 0);
+        -webkit-background-size: 105px auto;
+        background-size: 105px auto;
+        width:100%; height:100%;
+        @extend %inline-block;
+        text-indent:-9999px;
+    }
+    .burger {
+        position: absolute;
+        right:$wrap-gutter; top:20px;
+        background-color: $grey_dark;
+        @include border-radius(2px);
+        width:105px; height:84px;
+        @include opacity(1);
+        @include transition-time(opacity, 0.6s);
+        margin-left:$gutters-single;
+        .menu-burger {display:block;}
+        .menu-burger span {font-size:46px; padding:19px 29px; display: block;}
+    }
+    .filters {
+        padding-top:60px;
+        float: right;
+        margin-right: 140px;
+        li {
+            @extend %inline-block;
+            @extend %klavika-med;
+            padding:0 $gutters-single;
+            border-left:1px solid $grey_mid;
+            text-transform: uppercase;
+            @include transition-simple(color);
+            cursor:pointer;
+            &.first {
+                border:none;
+                color:$grey_mid;
+                font-size:14px;
+                text-transform: none;
+                cursor:default;
+            }
+            &.filter:hover {color:$red}
+        }
+    }
+    @include breakpoint(max-width 1700px) {
+
+        .logo {
+            position:relative;
+            margin:0 $gutters-single;
+            left:0;
+            float:left;
+        }
+        .burger {
+            position:relative;
+            float:right;
+            margin:0 $gutters-single;
+            left:0;
+        }
+        .filters {margin-right: 0px;}
+    }
+    @include breakpoint(max-width 568px) {
+        height:90px;
+        .logo {
+            width:60px; height:48px;
+            a {
+                -webkit-background-size: 60px auto;
+                background-size: 60px auto;
+            }
+        }
+        .burger {
+            width:60px; height:48px;
+            .menu-burger span {font-size:30px; padding:9px 15px;}
+        }
+    }
+}
+
+.slide-menu {
+    @extend %klavika-med;
+    text-transform: uppercase;
+    display:none;
+    &.mm-ismenu {background:$grey_dark; }
+    .mm-list li {
+
+        a {
+            font-size:18px;
+            line-height:1.8em;
+            color:white;
+            @include transition-simple(color);
+            padding: 3px 0px 3px 20px;
+        }
+        &.current-menu-item a{color:red;}
+        &:hover a{color:red;}
+    }
+    .mm-list>li:not(.mm-subtitle):not(.mm-label):not(.mm-noresults)::after {border:none;}
+    .mm-list>li.mm-selected>a:not(.mm-subopen), .mm-list>li.mm-selected>span {background:$grey_dark;}
+    .social {
+        padding:0 0;
+        li {
+            @extend %inline-block;
+            a {font-size:28px; line-height: 1.4em;}
+        }
+    }
+}
+
+.dropdowns.desktop {
+    display:none;
+    background-color:$grey_dark;
+    >.inner {
+        width:100%;
+        padding:0 $wrap-gutter;
+    }
+    .filter-block {
+        padding-top:$gutters;
+        padding-bottom:25px;
+        @extend .grid-wrapper;
+    }
+
+    ul.artists-disciplines {
+
+        > li > strong {
+            text-transform: uppercase;
+        }
+
+
+        li {
+            width: 100%;
+            float: none;
+            clear: both;
+        }
+
+        ul.artists > li {
+            margin: 0;
+        }
+    }
+
+    li {
+        //@extend %inline-block;
+        @include grid-span(3, 1, $output-style: 'float');
+        @extend %box-sizing;
+        margin:0 0 5px;
+    }
+    li a {
+        @extend %inline-block;
+        //padding:3px 20px;
+        //background-color:$dropdown_btn;
+        @include border-radius(2px);
+        color:white;
+        font-size:18px;
+        @include transition-simple(all);
+        &:hover {
+            //background-color:white;
+            color:$red;
+        }
+    }
+
+    .filter-block li strong.animation {color:$animation;}
+    .filter-block li strong.illustration {color:$illustration;}
+    .filter-block li strong.photography {color:$photography;}
+    .filter-block li strong.storyboards {color:$storyboards;}
+    .filter-block li strong.movingimage {color:$movingimage;}
+
+
+    .filter-block li a.animation {color:$animation;}
+    .filter-block li a.animation:hover {color:white;} //background-color:$animation;
+    .filter-block li a.illustration {color:$illustration;}
+    .filter-block li a.illustration:hover{color:white;} //background-color:$illustration;
+    .filter-block li a.photography {color:$photography;}
+    .filter-block li a.photography:hover {color:white;} //background-color:$photography;
+    .filter-block li a.storyboards {color:$storyboards;}
+    .filter-block li a.storyboards:hover {color:white;} //background-color:$storyboards;
+    .filter-block li a.movingimage {color:$movingimage;}
+    .filter-block li a.movingimage:hover {color:white;} //background-color:$movingimage;
+}
+
+.dropdowns.mobile {
+    background-color: black;
+    >.inner {
+        width: 100%;
+        padding: $gutters-single 3%;
+    }
+    .filter-block {
+        position: relative;
+        @extend %inline-block;
+        margin: 0 $gutters-single 5px;
+        width:270px;
+        .select {
+            position: relative;
+            overflow: hidden;
+            border: none;
+            background-color: white;
+            @include border-radius(2px);
+            width:100%;
+            &:after {
+                width: 0px;
+                height: 0px;
+                position: absolute;
+                top: 1.0em; z-index: 1;
+                right: 1.0em;
+                border-top: 0.4em solid $red;
+                border-right: 0.4em solid transparent;
+                border-left: 0.4em solid transparent;
+                content: '';
+            }
+        }
+        select {
+            @extend %box-sizing;
+            position: relative;
+            z-index: 3;
+            width:110%;
+            height:100%;
+            @include appearance(none);
+            border: none;
+            background-color: transparent;
+            background-image: none;
+            box-shadow: none;
+            color: $red;
+            cursor: pointer;
+            padding:6px 15px 6px 10px;
+            font-size:18px;
+            line-height:1.4em;
+        }
+    }
+}
+
+
+// Footer
+
+.footer-wrapper {
+    position: absolute;
+    left:0; bottom:0;
+    background-color:$grey_footer;
+    padding:60px 0;
+    //margin-top:90px;
+    width:100%;
+    >.inner {
+        padding:0 $wrap-gutter;
+    }
+    .footer {
+        max-width: #{$max-width+'px'};
+        margin:0 auto;
+        .logo {
+            @include grid-span(6, 1);
+            height:65px;
+            @include background(image-url('logo-full.gif') no-repeat 15px 0);
+            -webkit-background-size: 285px auto;
+            background-size: 285px auto;
+        }
+        .contact {
+            @include grid-span(6, 7);
+            text-align:right;
+            .footer-note {
+                color: $footer_copy;
+                font-size:14px;
+                margin:20px 0 0;
+            }
+            .footer-btn {
+                text-transform:uppercase;
+                color:$footer_copy;
+                border:1px solid $footer_copy;
+                padding:2px 30px;
+                &:hover {
+                    background-color:$footer_copy;
+                    color:$grey_footer;
+                }
+            }
+        }
+        @include breakpoint(max-width 650px) {
+            .logo {
+                @include grid-span(12, 1);
+                -webkit-background-size: 250px auto;
+                background-size: 250px auto;
+            }
+            .contact {
+                @include grid-span(12, 1);
+                text-align:left;
+                margin-top:30px;
+                .footer-note {margin:5px 0 0;}
+            }
+        }
+    }
+}
+
+// Homepage words
+
+a.highlight {
+    @include transition-simple(color);
+    &:hover {color:$red;}
+}
+
+
+// Error - 404
+
+.error {
+    text-align: center;
+    a {color:$red;}
+    a:hover {color:white;}
+}

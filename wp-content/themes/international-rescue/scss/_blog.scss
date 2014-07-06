@@ -1,0 +1,94 @@
+@import "bootstrap";
+
+body.blog, body.single-post, body.category {
+    background-color: white;
+    .content {
+        color:black;
+        h1, h2, h3, h4, h5, h6, p {color:black;}
+        a {color:$red;}
+        a:hover {color:black; text-decoration: underline;}
+        h1 a {color:black;}
+    }
+    .post-content {
+        margin-bottom:60px;
+    }
+    .post-meta {
+        @include grid-span(2, 2);
+        text-align: right;
+        p {font-size:13px;}
+        p.post-category {
+            border-top: 1px solid $grey_dark;
+            margin:0;
+            padding-top:41px;
+        }
+        p.photography a {color:$photography;}
+        p.news-animation a {color:$animation;}
+        p.illustration a {color:$illustration;}
+        p.storyboards a{color:$storyboards;}
+        p.movingimage a {color:$movingimage;}
+    }
+    .the-post {
+        @include grid-span(6, 4);
+        h3.title {
+            border-top: 1px solid $grey_dark;
+            padding:30px 0 0 0;
+        }
+        h3 a {
+            color:black;
+            &:hover {color:black; text-decoration: none;}
+        }
+        img {width:100%; max-width:700px; height:auto;}
+        .share {
+            text-align: right;
+            a {
+                font-size:25px;
+                width:30px;
+                @include transition-simple(color);
+                &.icon-facebook_noFrame {color:$facebook}
+                &.icon-twitter_noFrame {color:$twitter}
+                &.icon-pinterest_noFrame {color:$pinterest}
+                &:hover {text-decoration: none; color:black;}
+            }
+        }
+    }
+    .pagination, .pagination_single {
+        @include grid-span(6, 4);
+        span {
+
+            a {
+                @extend .btn;
+                color:$red;
+                border:1px solid $red;
+                &:hover {
+                    background-color:black;
+                    border:1px solid black;
+                    color:white;
+                    text-decoration: none;
+                }
+            }
+            &.next{float:left;}
+            &.previous{float:right;}
+        }
+    }
+    .cat-title {
+        @include grid-span(11, 2);
+        padding-bottom:30px;
+    }
+    @include breakpoint(max-width 1080px) {
+        .post-meta {@include grid-span(3, 1);}
+        .the-post {@include grid-span(9, 4);}
+        .pagination, .pagination_single {@include grid-span(9, 4);}
+    }
+    @include breakpoint(max-width 779px) {
+        .post-meta {
+            @include grid-span(12, 1);
+            p {margin:0; line-height:1.4em;}
+            p.post-category {border-top: none; padding-top:10px;}
+            p br {display:none;}
+
+        }
+        .the-post {@include grid-span(12, 1);}
+        .pagination, .pagination_single {@include grid-span(12, 1);}
+        .cat-title {@include grid-span(12, 1);}
+    }
+}
