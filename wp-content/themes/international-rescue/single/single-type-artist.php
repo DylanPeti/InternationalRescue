@@ -22,9 +22,9 @@ $artworks = get_ordered_published_artworks(ARTWORKS_PER_PAGE, $filters);
         <div class="artist-header">
             <div class="name"><h1><?php echo $artist_name ?></h1></div>
             <div class="actions">
-                <a href="<?php bloginfo('url'); ?>/contact/" class="btn btn-contactir">Contact us</a>
+                <a href="<?php bloginfo('url'); ?>/contact/" class="btn btn-contactir">Contact Us</a>
                 <?php if ($artist->field('portfolio.guid')): ?>
-                    <a target="_blank" href="<?php echo $artist->field('portfolio.guid'); ?>" class="btn btn-download btn-contactir">Download PDF</a>
+                    <a target="_blank" href="<?php echo $artist->field('portfolio.guid'); ?>" class="btn btn-download btn-contactir">Download Portfolio</a>
                 <?php endif; ?>
             </div>
             <div class="clear"></div>

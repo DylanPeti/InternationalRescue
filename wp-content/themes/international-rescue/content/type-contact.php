@@ -9,7 +9,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
         <h1><?php the_title() ?></h1>
         <?php the_content(); ?>
         <div class="clear"></div>
-        <div class="email-signup" id="email-signup">
+      <!--   <div class="email-signup" id="email-signup">
             <h2>Sign up to receive updates!</h2>
             <form method="post" action="http://irmachine.internationalrescue.com/t/r/s/tdhukdi/">
                 <div class="field-block">
@@ -31,7 +31,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
                     <p>Thanks for signing up, we look forward to sharing our Artists and stories with you.</p>
                 </div>
             <?php endif; ?>
-        </div>
+        </div> -->
     </div>
 </div>
 

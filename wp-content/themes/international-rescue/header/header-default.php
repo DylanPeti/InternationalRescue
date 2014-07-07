@@ -41,6 +41,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 			  
         </script>
 
+
     </head>
     <body <?php body_class(''); ?>>
 
@@ -61,6 +62,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
                 </div>
             </div>
             <div class="inner">
+  
                 <div class="the-menu">
 
                     <?php wp_nav_menu( array( 'container'=>false, 'theme_location' => 'primary' ) ); ?>
@@ -94,6 +96,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
                 </div>
                 <div class="filters desktop">
                     <div class="inner">
+
                         <ul>
                             <!--li class="first">Browse by:</li-->
                             <li class="filter filter-discipline plz" data-filter-block="filter-block-discipline">Disciplines</li>
@@ -114,6 +117,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 				
             ?>
             <div class="inner">
+         
                 <div class="filter-block plz menucontent" id="filter-block-discipline">
                     <ul class="artists-disciplines" id="ourHolder_disc">
                         <?php foreach ($partners_obj as $key => $discipline): ?>
@@ -227,6 +231,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
         <div class="dropdowns mobile" id="mobile-dropdowns">
             <div class="inner">
+            
                 <div class="filter-block filter-block-discipline">
                     <div class="select">
                         <select class="filter-by filter-by-discipline" id="filter-by-discipline">
@@ -271,5 +276,48 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
         </div>
 
         <div class="content" id="ak">
+        
+<?php 
+
+$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+if($actual_link == "http://localhost:8888/"){
+    ?>
+<div class="homepage-slider">
+<?php
+layerslider(1);
+?>
+<div class="arrow-down" id="scroll">
+    
+</div>
+<div class="gap"></div>
+</div>
+
+
+
+
+
+
             <div class="inner">
+
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type='text/javascript'>
+ $('body').css('overflow', 'hidden');
+// $(document).ready(function(){
+//     $('html, body').scrollTop(0);
+// });
+        $(".arrow-down").click(function() {
+
+
+            $('body').css('overflow', 'auto');
+            $('.inner').css('margin-top', '50px');
+            $('.inner ul').css('margin-top', '-50px');
+            $('.social').css('margin-top', '50px');
+
+$("html, body").animate({ scrollTop: $('.homepage-slider')[0].scrollHeight}, 430);
+});
+        </script>
+           
+<?php 
+}
+?>
 

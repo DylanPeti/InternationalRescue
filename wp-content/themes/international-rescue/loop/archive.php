@@ -10,6 +10,7 @@ if (have_posts()) {
 
 ?>
     <div class="grid-wrapper">
+
         <div class="inner">
 
             <div class="cat-title"><h6><a href="<?php echo get_bloginfo( 'url' ) ?>/news">News</a> > <?php printf(__('%s', 'carrington-jam'), $cat_title); ?></h6></div>

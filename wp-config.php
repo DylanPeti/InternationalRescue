@@ -15,13 +15,13 @@
  */
 
 /** $root = 'http://ir.site.gladeye.co'; */
-$root = 'http://ir.fortylove.vleaf.co.nz';
+$root = 'http://localhost:8888';
 define('WP_HOME', $root);
 define('WP_SITEURL', $root);
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'international_rescue');
+define('DB_NAME', 'international rescue');
 
 /** MySQL database username */
 define('DB_USER', 'root');
@@ -37,6 +37,7 @@ define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
+// define('WP_MEMORY_LIMIT', '64M');
 
 /**#@+
  * Authentication Unique Keys and Salts.
