@@ -28,10 +28,15 @@ if ($taxonomy && $term_slug)
 $next_url = admin_url( 'admin-ajax.php?'.http_build_query($next_query_vars) );
 
 ?>
-
+<body style="position:relative; height: auto;">
 <div class="grid-wrapper artworks-container" data-columns>
+
     <?php foreach ($artworks as $artwork): ?>
-        <?php cfct_custom_content('type-artwork', compact('artwork', 'artworks_link_type')); ?>
+
+        <?php //goes to templates.php ?>
+        <?php cfct_custom_content('type-artwork', compact('artwork', 'artworks_link_type')); 
+//cfct_custom_content('type-artwork', compact('artwork', 'artworks_link_type'));
+        ?>
     <?php endforeach; ?>
 
     <a class="next-page hidden" href="<?php echo $next_url ?>"></a>

@@ -16,11 +16,13 @@ $filters  = add_artwork_artist_filter(array(), $artist->display('post_name'));
 $filters  = add_artwork_taxonomy_params_filter($filters, $_GET);
 $artworks = get_ordered_published_artworks(ARTWORKS_PER_PAGE, $filters);
 ?>
-
+<body style="position:relative; height: auto;">
     <div class="grid-wrapper">
 
         <div class="artist-header">
-            <div class="name"><h1><?php echo $artist_name ?></h1></div>
+
+       <?php $dog = preg_replace('/^-+|-+$/', '', strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $artist_name))); ?>
+            <div class="name"><h1><a href="http://localhost:8888/artist/<?php echo $dog ?>/" > <?php echo $artist_name ?></a></h1></div>
             <div class="actions">
                 <a href="<?php bloginfo('url'); ?>/contact/" class="btn btn-contactir">Contact Us</a>
                 <?php if ($artist->field('portfolio.guid')): ?>
@@ -52,13 +54,28 @@ $artworks = get_ordered_published_artworks(ARTWORKS_PER_PAGE, $filters);
                     <!?php endforeach; ?-->
 					
 					<?php 
+
 												$terms = get_field('discipline');
+
+
 												//print_r($terms);
-												foreach( $terms as $term ): ?>
+												foreach( $terms as $term): ?>
 												<li class="<?php echo $term->slug; ?>">
                             <a class="word word-discipline disc-tit"
-                                href="<?php echo get_permalink().'?discipline='.$term->slug; ?>">
-												<?php echo $term->name;?>
+                                href="<?php echo get_permalink().'?discipline='.$term->slug; ?>" style="">
+
+												<?php
+            
+
+                                         echo $term->name;
+
+
+
+             
+
+
+
+                                                  ?>
 											      </a>
                         </li>
                     <?php endforeach; ?>
@@ -72,7 +89,9 @@ $artworks = get_ordered_published_artworks(ARTWORKS_PER_PAGE, $filters);
 
         <div class="artworks-column column-right" id="profile-artworks-wrapper" data-columns>
             <?php foreach ($artworks as $artwork): ?>
+       
                 <?php cfct_custom_content('type-artwork', compact('artwork')); ?>
+                
             <?php endforeach; ?>
 
             <a class="next-page hidden" href="<?php echo $next_url ?>"></a>

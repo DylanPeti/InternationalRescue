@@ -700,7 +700,7 @@ class Infinite_Scroll_Presets_Table extends WP_List_Table {
 	function prepare_items() {
 		global $infinite_scroll;
 
-		$per_page = 25;
+		$per_page = 5;
 
 		$columns = $this->get_columns();
 		$hidden = array();

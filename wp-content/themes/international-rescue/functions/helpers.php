@@ -121,6 +121,7 @@ function get_artworks_link_type($taxonomy, $term_slug)
 }
 
 
+
 /**
  * Get order name depending of existing taxonomy
  *
@@ -279,3 +280,28 @@ function get_artist_disciplines($artist_id)
 
     return $disciplineFetcher->getByArtist($artist_id);
 }
+
+function set_newuser_cookie() {
+    if ( !is_admin() && !isset($_COOKIE['sitename_newvisitor'])) {
+        setcookie('sitename_newvisitor', 1, time()+3600, COOKIEPATH, COOKIE_DOMAIN, false);
+    }
+}
+add_action( 'init', 'set_newuser_cookie');
+
+
+//url friendly
+function seoUrl($string) {
+    //Lower case everything
+    $string = strtolower($string);
+    //Make alphanumeric (removes all other characters)
+    $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
+    //Clean up multiple dashes or whitespaces
+    $string = preg_replace("/[\s-]+/", " ", $string);
+    //Convert whitespaces and underscore to dash
+    $string = preg_replace("/[\s_]/", "-", $string);
+    return $string;
+}
+
+
+
+

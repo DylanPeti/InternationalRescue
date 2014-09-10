@@ -8,10 +8,23 @@ if (have_posts()) {
 
 
 ?>
+<body style="position:relative; height: auto;">
     <div class="grid-wrapper">
         <div class="inner">
+        <?php  http://stage.internationalrescue.com/news/
+         $news_link = "$_SERVER[REQUEST_URI]";
+        if($news_link == "/news/"){ ?>
+
+
+         <h1 id="news-title">News</h1>
+
+
+         <?php
+         }   
+         ?> 
 
     <?php
+ 
 
         while (have_posts()) {
 

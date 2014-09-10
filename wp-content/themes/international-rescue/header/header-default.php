@@ -1,7 +1,22 @@
 <?php
+ob_start();
+session_start();
+
 
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
+
+// if (!isset($_COOKIE['HomepageSlider'])){
+//     setcookie('homepageSlider', 1);
+// }
+$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$page_check = "$_SERVER[REQUEST_URI]";
+$string = 'artwork';
+$stringtwo = 'about';
+$stringthree = 'news';
+$checka = strpos($page_check, $stringtwo);
+$check =  strpos($page_check, $string);
+$checks = strpos($page_check, $stringthree);
 
 ?>
 <!DOCTYPE html>
@@ -12,7 +27,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes() ?>>
     <head>
         <title><?php wp_title( '-', true, 'right' ); echo wp_specialchars( get_bloginfo('name'), 1 ); ?></title>
-        <link rel="shortcut icon" href="<?php bloginfo('stylesheet_directory'); ?>/img/favicon.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="<?php bloginfo('stylesheet_directory'); ?>/img/small.png" type="image/x-icon" />
         <meta http-equiv="content-type" content="<?php bloginfo('html_type') ?>; charset=<?php bloginfo('charset') ?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="<?php bloginfo('description'); ?>">
@@ -23,6 +38,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
         <?php wp_get_archives('type=monthly&format=link'); ?>
         <link rel="alternate" type="application/rss+xml" href="<?php bloginfo('rss2_url') ?>" title="<?php printf( __( '%s latest posts', 'carrington-jam' ), wp_specialchars( get_bloginfo('name'), 1 ) ) ?>" />
         <link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="<?php printf( __( '%s latest comments', 'carrington-jam' ), wp_specialchars( get_bloginfo('name'), 1 ) ) ?>" />
+     <!--   <script type="text/javascript" src="/wp-content/themes/international-rescue/js/slider.js"></script>-->
 		
 		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_directory'); ?>/css/main.css" />
@@ -38,20 +54,14 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
               s.parentNode.insertBefore(bh, s);
               })(document, 'script');
 			  
-			  
         </script>
 
 
     </head>
-    <body <?php body_class(''); ?>>
-
-    <!--[if lt IE 9]>
-        <script type='text/javascript'>
-            window.location.href = "<?php echo get_bloginfo( 'url' ) ?>/upgrade"
-        </script>
-    <![endif]-->
+    <body <?php body_class(''); ?> style="background-color:#ECECEC">
 
     <div class="container">
+
 
         <div class="menu-overlay" id="menu-overlay">
             <div class="menu-header">
@@ -59,6 +69,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 				<img src="<?php bloginfo("template_url");?>/img/irl-logo.png"></a></div>
                 <div class="menu-close">
                     <button id="menu-cross" class="menu-burger"><span class="icon-cross"></span></button>
+
                 </div>
             </div>
             <div class="inner">
@@ -69,22 +80,31 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
                     
                     <ul class="social">
                         <li><a class="icon-facebook_Frame" href="https://www.facebook.com/internationalrescue" target="_blank"><span class="visuallyhidden">Facebook</span></a></li>
-                        <li><a class="icon-pinterest_Frame" href="http://www.pinterest.com/intlrescue/" target="_blank"><span class="visuallyhidden">Pinterest</span></a></li>
-                        <li><a class="icon-twitter_Frame" href="https://twitter.com/intl_rescue" target="_blank"><span class="visuallyhidden">Twitter</span></a></li>
+                                                <li><a class="icon-twitter_Frame" href="https://twitter.com/intl_rescue" target="_blank"><span class="visuallyhidden">Twitter</span></a></li>
                         <li><a class="icon-linked_Frame" href="http://www.linkedin.com/company/international-rescue" target="_blank"><span class="visuallyhidden">LinkedIn</span></a></li>
+                        <li><a class="icons-instagram_Frames" href="http://www.instagram.com/intl_rescue/" target="_blank"><span class="visuallyhidden">Pinterest</span></a></li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <header id="header_nav" class="small">
+           
             <div class="iner">
+            <div class="padding">
 				<?php if ( is_front_page() ) {?>
+               
                 <div class='logo'>
-                    <a href="<?php echo get_bloginfo( 'url' ) ?>">International Rescue</a>
+           <a href="<?php echo get_bloginfo( 'url' ) ?>">
+                <!-- <img src="http://stage.internationalrescue.com/wp-content/uploads/2014/07/inter-1440x720.png" alt="International Rescue"> -->
+    </a>
                 </div>
+            
 				<?php } else { ?>
-				
+				<?php $partners_obj = get_terms( 'discipline', array('hide_empty' => false) ); 
+             //   var_dump($partners_obj); 
+              //  print_r(get_object_vars($partners_obj[0])) ?>
+
 				<div class='pagelogo'>
                     <a href="<?php echo get_bloginfo( 'url' ) ?>">International Rescue</a>
                 </div>
@@ -93,19 +113,24 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 				
                 <div class="burger">
                     <button id="menu-burger" class="menu-burger"><span class="icon-burger"></span></button>
+
+
                 </div>
                 <div class="filters desktop">
-                    <div class="inner">
+        
+                     <div class="inner">
+         
 
                         <ul>
                             <!--li class="first">Browse by:</li-->
-                            <li class="filter filter-discipline plz" data-filter-block="filter-block-discipline">Disciplines</li>
-                            <li class="filter filter-artist plz" data-filter-block="filter-block-artists">Artists</li>
-                            <li class="filter filter-tag plz" data-filter-block="filter-block-tag">Tags</li>
+                            <li class="filter filter-discipline plz" data-filter-block="filter-block-discipline" id="header-item">Disciplines</li>
+                            <li class="filter filter-artist plz" data-filter-block="filter-block-artists" id="header-item">Artists</li>
+                            <li class="filter filter-tag plz" data-filter-block="filter-block-tag" id="header-item">Tags</li>
                         </ul>
                     </div>
                 </div>
                 <div class="clear"></div>
+            </div>
             </div>
 			  <div class="dropdowns desktop" id="dropdowns">
             <?php
@@ -116,7 +141,12 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 				
 				
             ?>
-            <div class="inner">
+             <?php if ( is_front_page() ) {?>
+                <div class="inner" id="contain-this" style="padding: 0 3%">
+                   
+                    <?php } else { ?>
+        <div class="inner">
+        <?php } ?>
          
                 <div class="filter-block plz menucontent" id="filter-block-discipline">
                     <ul class="artists-disciplines" id="ourHolder_disc">
@@ -137,7 +167,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 					<ul id="filterOptions">
 						<li class="active"><a href="#" class="all">All</a></li>
 						<?php foreach ($partners_obj as $discipline): ?>
-						<li><a href="#" class="<?php echo $discipline->slug; ?>"><?php echo $discipline->name; ?></a></li>
+						<li><a href="#" class="<?php echo $discipline->slug; ?>"><?php echo $discipline->name;?></a></li>
 						<?php endforeach; ?>
 					</ul>
 				
@@ -230,7 +260,12 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
       
 
         <div class="dropdowns mobile" id="mobile-dropdowns">
-            <div class="inner">
+         <?php if ( is_front_page() ) {?>
+                <div class="inner" id="contain-this" style="padding: 0 3%">
+                   
+                    <?php } else { ?>
+        <div class="inner">
+        <?php } ?>
             
                 <div class="filter-block filter-block-discipline">
                     <div class="select">
@@ -238,7 +273,9 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
                             <option value="">Discipline</option>
                         <?php foreach ($partners_obj as $discipline): ?>
                             <option value="<?php echo get_bloginfo( 'url' ) .'/artwork/discipline/'. $discipline->slug ?>">
-                                <?php echo $discipline->name ?>
+
+                            <?php    echo $discipline->name;  ?> 
+                        
                             </option>
                         <?php endforeach; ?>
                         </select>
@@ -274,50 +311,167 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
                 </div>
             </div>
         </div>
+<?php if ( !is_front_page() ) {?>
+        <div class="content" id="ak" style="padding: 70px 3% 0;">
 
-        <div class="content" id="ak">
         
-<?php 
+<?php } else { ?>
+    <div class="content" id="ak">
+<?php }
 
-$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-if($actual_link == "http://localhost:8888/"){
-    ?>
+
+    
+// && isset($_COOKIE['sitename_newvisitor'])
+
+
+
+$_SESSION['store_url'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+
+if($_SESSION['store_url'] == "http://localhost:8888/" || $_SESSION['store_url'] == "http://ir.fortylove.vleaf.co.nz/" || $_SESSION['store_url'] == "http://stage.internationalrescue.com/"){ 
+?>
+<div class="responsive-div">
+<div class="hold-this">
+<div class="slider-header"><h1>WE CREATE AN INSPIRING CONNECTION 
+                      BETWEEN OUR ARTISTS AND CLIENTS</h1></div>
+
+<div class="arrow-down" id="scroll">
+</div>
+<div id="slider-nav">
+    <button class="slider-button" id="b-one" data-dir="prev" data-button="0" onclick="slide(0, this.id)"></button>
+    <button class="slider-button" id="b-two" data-dir="next" data-button="1" onclick="slide(1, this.id)"></button>
+    <button class="slider-button" id="b-three" data-dir="next" data-button="2" onclick="slide(2, this.id)"></button>
+    <button class="slider-button" id="b-four" data-dir="next" data-button="3" onclick="slide(3, this.id)"></button>
+    <button class="slider-button" id="b-five" data-dir="next" data-button="4" onclick="slide(4, this.id)"></button>
+</div>
+</div>
+
+</div>
+<div class="slider-container">
 <div class="homepage-slider">
 <?php
-layerslider(1);
+
+
+echo do_shortcode('[layerslider id="3"]'); 
+
+
 ?>
-<div class="arrow-down" id="scroll">
-    
-</div>
-<div class="gap"></div>
 </div>
 
+</div>
+</div>
+
+<div class="hide-it"></div>
 
 
+<?php
 
 
+?>
 
-            <div class="inner">
-
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type='text/javascript'>
- $('body').css('overflow', 'hidden');
-// $(document).ready(function(){
-//     $('html, body').scrollTop(0);
-// });
-        $(".arrow-down").click(function() {
+<?php if ( is_front_page() ) {?>
+                <div class="inner" id="contain-this" style="padding: 0px 3% 0">
+                   <div class="gap"><!-- <h1 style="margin-left:auto; margin-right:auto; width:100%; text-align:center; margin-top:30px;">Artists Works</h1> --></div>
+                    <?php } else { ?>
+        <div class="inner">
+        <?php } ?>
 
 
-            $('body').css('overflow', 'auto');
-            $('.inner').css('margin-top', '50px');
-            $('.inner ul').css('margin-top', '-50px');
-            $('.social').css('margin-top', '50px');
-
-$("html, body").animate({ scrollTop: $('.homepage-slider')[0].scrollHeight}, 430);
-});
-        </script>
-           
 <?php 
-}
+} 
+
+if (isset($_COOKIE['homepageSlider'])){
+
 ?>
+<script type='text/javascript'>
+
+
+
+</script>
+
+<?php } ?>
+
+<!--Use wp_enqueue to load this script.-->
+
+<?php if(is_front_page()){ ?>
+
+
+<script>
+$(document).ready(function () {
+      $(".arrow-down").click(function() {
+    console.log('clicked');
+   $('html, body').animate({
+        scrollTop: $('.gap').offset().top  -70
+    }, 1000);
+   return false;
+    
+});
+$(".footer-wrapper").show();
+
+});
+ $('body').css('overflow-y', 'auto');
+
+  function slide(number, item){
+   var slideContainer = $('.homepage-slider ul').css('overflow-x', 'hidden').children('li'),
+   imgsLen = slideContainer.length,
+   imgWidth = slideContainer.width();
+   var button = number;
+   console.log(item);
+   var dir = "data-button";
+   var slider = $(".homepage-slider ul");
+   var sliderButton = $(".slider-button");
+   var marginLeft;
+   var color;
+
+  sliderButton.css({
+    'background-color': 'rgba(255,255,255,0.1)'
+  })
+  $('#' + item).css({
+    'background-color': 'rgba(255,255,255,0.6)'
+  })
+     switch(button){
+        case 0:
+        marginLeft = 0;
+
+        break;
+
+        case 1:
+        marginLeft = imgWidth;
+        break;
+
+        case 2:
+        marginLeft = imgWidth * 2;
+        break;
+
+        case 3:
+        marginLeft = imgWidth * 3;
+        break;
+
+        case 4:
+        marginLeft = imgWidth * 4;
+        break;
+     }
+     
+
+     slider.animate({
+        'margin-left': -marginLeft
+    });
+    
+    
+
+
+}
+
+
+
+</script>
+
+
+<?php } 
+      if(!is_front_page()){ ?>
+
+
+     <?php   } ?>
+
+
 

@@ -3,25 +3,39 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
+$news_page = "$_SERVER[REQUEST_URI]";
 ?>
 
             <div class="clear"></div>
             </div>
         </div><!-- .content -->
-        <div class="footer-wrapper">
+
+
+    <?php if(is_page('contact') || $news_page = '/news/') { ?>
+             <div class="footer-wrapper" style="position: relative;">
+    <?php } else {
+ ?>
+               <div class="footer-wrapper">
+
+
+   <?php } ?>
+       
             <div class="inner">
                 <div class="footer">
                     <div class="logo"></div>
 					
                     <div class="contact">
+ 
 					<p class="footer-note">© 2014 International Rescue</p>
                     <div class="contactus">
-						<a class="btn footer-btn contactfooter" href="<?php echo get_bloginfo( 'url' ) ?>/contact">Contact Us</a>
+						
 						<ul class="social footersocial">
-							<li><a class="icon-facebook_Frame" href="https://www.facebook.com/internationalrescue" target="_blank"><span class="visuallyhidden">Facebook</span></a></li>
-							<li><a class="icon-pinterest_Frame" href="http://www.pinterest.com/intlrescue/" target="_blank"><span class="visuallyhidden">Pinterest</span></a></li>
-							<li><a class="icon-twitter_Frame" href="https://twitter.com/intl_rescue" target="_blank"><span class="visuallyhidden">Twitter</span></a></li>
-							<li><a class="icon-linked_Frame" href="http://www.linkedin.com/company/international-rescue" target="_blank"><span class="visuallyhidden">LinkedIn</span></a></li>
+              
+              <li><a class="icon-facebook_Frame" href="https://www.facebook.com/internationalrescue" target="_blank"><span class="visuallyhidden">Facebook</span></a></li>
+              <li><a class="icon-twitter_Frame" href="https://twitter.com/intl_rescue" target="_blank"><span class="visuallyhidden">Twitter</span></a></li>
+              <li><a class="icon-linked_Frame" href="http://www.linkedin.com/company/international-rescue" target="_blank"><span class="visuallyhidden">LinkedIn</span></a></li>
+							<li><a class="icons-instagram_Frame" href="http://www.instagram.com/intl_rescue/" target="_blank"><span class="visuallyhidden">Pinterest</span></a></li>
+              <li><a class="btn footer-btn contactfooter" href="<?php echo get_bloginfo( 'url' ) ?>/contact">Contact Us</a></li>
 						</ul>
 						
 					</div>

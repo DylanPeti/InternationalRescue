@@ -10,7 +10,7 @@ define('CFCT_PATH', trailingslashit(TEMPLATEPATH));
 // Number of arworks
 
 define('MAX_FEATURED_BY_ARTIST', 60);
-define('ARTWORKS_PER_PAGE', 100);
+define('ARTWORKS_PER_PAGE', 30);
 
 // Order names
 define('ORDER_HOME', 'order_home');

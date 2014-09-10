@@ -12,10 +12,10 @@ $excerpt = get_the_excerpt();
 $content =  get_the_content();
 $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
 $hasImages = count($matches[0]);
-
 ?>
 
 <div class="post-content">
+
     
     <div class="post-meta">
         <p class="post-category <?php echo $category[0]->slug; ?>"><?php the_category(', '); ?></p>

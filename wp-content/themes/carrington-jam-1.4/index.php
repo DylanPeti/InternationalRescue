@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of the Carrington JAM Theme for WordPress
 // http://carringtontheme.com
 //

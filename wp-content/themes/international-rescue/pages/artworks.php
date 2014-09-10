@@ -21,7 +21,7 @@ if ($taxonomy && $term_slug)
 {
     $taxonomy_filter = pods($taxonomy, array('where' => 't.name = "'. $term_slug.'"'));
 }
-//print_r($taxonomy_filter);
+// print_r($taxonomy_filter);
 ?>
 <?php if ($taxonomy_filter): ?>
  <div class="taxo-boxes top taxo-grid termname">

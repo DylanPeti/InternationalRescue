@@ -9,15 +9,15 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 get_header();
 
 ?>
-<div class="post-content">
+<div class="post-content" style="width:50%;">
     <div class="the-post">
         <h1><?php the_title() ?></h1>
         <div class="clear"></div>
         <div class="email-signup" id="email-signup">
-            <h2>Please enter your details below to receive an inspiring image every now and then. </h2>
+            <p style="margin-top:30px;">Please enter your details below to receive an inspiring image every now and then. </p>
             <form method="post" action="http://irmachine.internationalrescue.com/t/r/s/tdhukdi/">
                 <div class="field-block">
-                    <label>Full name</label>
+                    <label>Full Name</label>
                     <input type="text" placeholder="Full Name" id="name" name="cm-name">
                 </div>
                 <div class="field-block">
@@ -32,7 +32,7 @@ get_header();
 
             <?php if ('1' == $_GET['submitted']): ?>
                 <div class="thanks-message">
-                    <p>Thanks for signing up, we look forward to sharing our Artists and stories with you.</p>
+          e          <p>Thanks for signing up, we look forward to sharing our Artists and stories with you.</p>
                 </div>
             <?php endif; ?>
         </div>

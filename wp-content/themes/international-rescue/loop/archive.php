@@ -9,6 +9,7 @@ $cat_title = single_cat_title('', false);
 if (have_posts()) {
 
 ?>
+<body style="position:relative; height: auto;">
     <div class="grid-wrapper">
 
         <div class="inner">

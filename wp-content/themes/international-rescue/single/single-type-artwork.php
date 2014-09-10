@@ -62,6 +62,7 @@ if ($fallback)
 
 ?>
 <!--div id="toggling"></div-->
+
 <div class="grid-wrapper">
 
     <div class="image-gallery-wrapper" id="gallery-wrapper">

@@ -14,25 +14,18 @@
  * @package WordPress
  */
 
-if (strpos($_SERVER['SERVER_NAME'], ".local") !== FALSE || strpos($_SERVER['SERVER_NAME'], ".dev") !== FALSE) {
-    $port = ($_SERVER['SERVER_PORT'] != 80) ? ':'.$_SERVER['SERVER_PORT'] : '';
-    $root = 'http://'.$_SERVER['SERVER_NAME'].$port.str_replace(array("/wp-admin", " "), array("", "%20"), dirname($_SERVER['PHP_SELF']));
-    define('WP_HOME', $root);
-    define('WP_SITEURL', $root);
-}
-
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'ir_master');
+define('DB_NAME', 'database_name_here');
 
 /** MySQL database username */
-define('DB_USER', 'gladeye');
+define('DB_USER', 'username_here');
 
 /** MySQL database password */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'password_here');
 
 /** MySQL hostname */
-define('DB_HOST', 'mysql.gladeye.org');
+define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -49,14 +42,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'v;rla),LBN-CIN8x+(eX&Q_Dzs ~ ?$IDb-y@O70rEmBQ1@0%IPf2 {7`++!5ETR');
-define('SECURE_AUTH_KEY',  'dP1r!Q>a$Y{._.JgO[a?=h`ggZo+CK|w1`|vo#_z+nNPB*--J!qRj|l=*N92=Ih9');
-define('LOGGED_IN_KEY',    'Oo3 }f,|dRqbJnn-YKn0t76tXLbBYR}oK:s(:k]IEq>B)F)}@AuN_|H5@0}0L`)@');
-define('NONCE_KEY',        '%2O?]Sn2DmKd`|V61}ZFwpGs%UG8ClHt=}yE[~fxtCM-Sj|feP^Jihb_WE$YM]!p');
-define('AUTH_SALT',        '?I(I*w@+.=|O<mTlHHDa)25W37Fvo-JAriOm{.q53I9P=0;a,|%Fm4-6g_+^M^fb');
-define('SECURE_AUTH_SALT', 'NyQlPLUt!QAcv3)LP IM%S6ik?fMEy8Ht89<r[MS6L4Kh8CSE[9}9uoEdy9YK+@F');
-define('LOGGED_IN_SALT',   'Prm]lX{-D9MU%(^fcQTprtoBqFwLu{u_>Q6+Aar~IavETEFEPnKa><Z96}S{wJX/');
-define('NONCE_SALT',       'xyz=6913iZFcM-6S-X+Y(WmqnAkwu&i5+6eH6-^3^2f#J80c7s*R%rOL4{QRW<HZ');
+define('AUTH_KEY',         'put your unique phrase here');
+define('SECURE_AUTH_KEY',  'put your unique phrase here');
+define('LOGGED_IN_KEY',    'put your unique phrase here');
+define('NONCE_KEY',        'put your unique phrase here');
+define('AUTH_SALT',        'put your unique phrase here');
+define('SECURE_AUTH_SALT', 'put your unique phrase here');
+define('LOGGED_IN_SALT',   'put your unique phrase here');
+define('NONCE_SALT',       'put your unique phrase here');
 
 /**#@-*/
 
@@ -67,16 +60,6 @@ define('NONCE_SALT',       'xyz=6913iZFcM-6S-X+Y(WmqnAkwu&i5+6eH6-^3^2f#J80c7s*R
  * prefix. Only numbers, letters, and underscores please!
  */
 $table_prefix  = 'wp_';
-
-/**
- * WordPress Localized Language, defaults to English.
- *
- * Change this to localize WordPress. A corresponding MO file for the chosen
- * language must be installed to wp-content/languages. For example, install
- * de_DE.mo to wp-content/languages and set WPLANG to 'de_DE' to enable German
- * language support.
- */
-define('WPLANG', '');
 
 /**
  * For developers: WordPress debugging mode.

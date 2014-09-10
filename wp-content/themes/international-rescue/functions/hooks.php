@@ -1,6 +1,6 @@
 <?php
 
-use Models\DataFetcher\ArtistFetcher;
+use Models\DasltaFetcher\ArtistFetcher;
 use Models\DataFetcher\ArtworkFetcher;
 use Models\DataFetcher\DisciplineFetcher;
 
@@ -37,14 +37,20 @@ add_action('admin_menu', 'artworks_list_register');
  */
 function enqueue_scripts()
 {
+
+
     $dir = get_bloginfo('stylesheet_directory');
 
     // Header
+     if(is_front_page()){
+    wp_enqueue_script('slider', $dir . '/js/slider.js', array('jquery'), '4.2.3', true);
+}
     wp_enqueue_script('modernizr', $dir . '/bower_components/modernizr/modernizr.js', array(), '2.7.2');
 
-    // Footer
+    // 
     wp_enqueue_script('salvattore', $dir . '/bower_components/salvattore/dist/salvattore.min.js', array(), '1.0.4', true);
     wp_deregister_script('jquery');
+    wp_enqueue_script('flowtype', $dir . '/js/FlowType.JS-master/flowtype.js', array(), false, true);
     wp_enqueue_script('jquery', $dir . '/bower_components/jquery/dist/jquery.min.js', array(), '1.11.0', true);
     wp_enqueue_script('jquery.mmenu', $dir . '/bower_components/jQuery.mmenu/src/js/jquery.mmenu.min.js', array('jquery'), '4.2.3', true);
     wp_enqueue_script('jquery.throttle', $dir . '/bower_components/jquery-throttle-debounce/jquery.ba-throttle-debounce.js', array('jquery'), '1.1', true);
